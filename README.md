@@ -30,6 +30,7 @@ Ja no segundo for temos a criação da lista na ordem inversa veja como o i no f
 e como queremos uma ordem inversa começamos pelo maior numero e utilizamos i-- para a decrementação da lista assim formando a lista em ordem inversa.
 
 ##Exercício 2
+
 O exercício 2 apresenta as mesmas utilizações do for para funcionalidade do codigo assim como foi explicado na versao alternativa do exercicio 1, a diferença e que no exercicio 1 usamos apenas uma lista para armazenar e ler os numeros , no exercio 1 original usamos 3 listas para cada palavra a ser escrita e no exercio 1 alternativo temos o vetor bidimensional, que deixa o codigo com menos repetição de comandos.  
 
 
