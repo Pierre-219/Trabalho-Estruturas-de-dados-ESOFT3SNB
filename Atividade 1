@@ -1,5 +1,5 @@
 //Feiro por Pierre
-//Exercicio 1
+//EXERCICIO 1
 #include <stdio.h>
 
 int main() {
@@ -44,7 +44,7 @@ int main() {
     return 0;
 }
 
-//Exercicio 2
+//EXERCICIO 2
 #include <stdio.h>
 
 int main() {
@@ -65,5 +65,31 @@ int main() {
     
     printf("\n");
     
+    return 0;
+}
+
+EXERCICIO 3
+//Feito por João Vittor Mulinari
+#include <stdio.h>
+int main() {
+    int matriz[3][3];
+    int i, j;
+    // Leitura da matriz
+    printf("Digite os elementos da matriz 3x3:\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            printf("Elemento [%d][%d]: ", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+    // Multiplicando por 5 e exibindo resultado
+    printf("\nMatriz resultante (multiplicada por 5):\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            printf("%d ", matriz[i][j] * 5);
+        }
+        printf("\n");
+    }
+
     return 0;
 }
