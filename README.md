@@ -5,12 +5,15 @@ Realização dos exercicios e atividades. Integrantes Pierre Bittencourt, João 
 
 ## Exercício 1
 O código começa com inserção de três vetores o qual possuem a capacidade de 49 digitos pois o vetor conta o 0 que no caso da palavra [50] seria de 0 ate 49.
+
 <img width="190" height="98" alt="image" src="https://github.com/user-attachments/assets/9ce27b3c-a161-4fae-87f2-f0596f2db0e4" />
 
 Apos a defição do três vetores fazemos os comandos para o usuario poder digitar as palavras e realizar a leitura leitura.
+
 <img width="332" height="176" alt="image" src="https://github.com/user-attachments/assets/af92fda1-b288-48a7-96f2-bb0120d1ee29" />
 
 Logo depois temos os comandos para a impressão da ordem inversa.
+
 <img width="254" height="88" alt="image" src="https://github.com/user-attachments/assets/b12159a9-2488-4281-9c6e-af00c842e7f4" />
 
 Esse códgio foi montado de uma forma bem simples mas uma fomra mais limpa e mais rapida de escrever seria usando um vetor bidimensional
