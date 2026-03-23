@@ -15,10 +15,14 @@ Logo depois temos os comandos para a impressão da ordem inversa.
 
 Esse códgio foi montado de uma forma bem simples mas uma fomra mais limpa e mais rapida de escrever seria usando um vetor bidimensional
 como "char palavras[3][50];" isso e a mesma coisa que 3 celulas com 49 espaços. E a utilizaçao do comando de repitição for.
+
 <img width="378" height="184" alt="image" src="https://github.com/user-attachments/assets/c7f7d07e-1390-45c9-9232-9473fc54db51" />
+
 vemos os comandos for na imagem acima, no primeiro temos o comando que cria as três perguntas para o usuario digitar uma palavra. 
 No scanf ele guardar a variavel no vetor.
+
 <img width="288" height="80" alt="image" src="https://github.com/user-attachments/assets/b753c28c-3aec-430c-ad42-00c566a0d628" />
+
 Ja no segundo for temos a criação da lista na ordem inversa veja como o i no for esta em dois, pois o vetor começa a contar a partir do zero
 e como queremos uma ordem inversa começamos pelo maior numero e utilizamos i-- para a decrementação da lista assim formando a lista em ordem inversa.
 
