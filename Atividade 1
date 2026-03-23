@@ -23,6 +23,26 @@ int main() {
 
     return 0;
 }
+//Versão Alternativa do exercicio 1
+#include <stdio.h>
+
+int main() {
+    char palavras[3][50];
+
+    printf("Digite tres palavras (uma por linha):\n");
+
+    for(int i = 0; i < 3; i++) {
+        printf("Palavra %d: ", i+1);
+        scanf("%s", palavras[i]);
+    }
+
+    printf("\nOrdem inversa:\n");
+    for(int i = 2; i >= 0; i--) {
+        printf("%s\n", palavras[i]);
+    }
+
+    return 0;
+}
 
 //Exercicio 2
 #include <stdio.h>
