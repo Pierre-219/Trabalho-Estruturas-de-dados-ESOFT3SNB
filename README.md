@@ -1,7 +1,7 @@
 # Trabalho-Estruturas-de-dados-ESOFT3SNB
 Realização dos exercicios e atividades. Integrantes Pierre Bittencourt, João Vittor Mulinari, Thaylor, Antonio, Bruno Carvalho.
 
-#Exercício 1 e 2 explicação:
+# Exercício 1 e 2 explicação:
 
 ## Exercício 1
 O código começa com inserção de três vetores o qual possuem a capacidade de 49 digitos pois o vetor conta o 0 que no caso da palavra [50] seria de 0 ate 49.
