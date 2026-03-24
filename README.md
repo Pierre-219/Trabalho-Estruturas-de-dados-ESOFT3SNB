@@ -71,5 +71,56 @@ Este projeto foi desenvolvido com finalidade educacional, visando o aprendizado 
 ## Autor
 João Vittor Mulinari
 
+Exercicio 4
+# Multiplicação de Matriz por Matriz Identidade em C
+
+Este projeto consiste em um programa em linguagem C que realiza a leitura de uma matriz 3x3, gera a matriz identidade correspondente e efetua a multiplicação entre elas.
+
+## Descrição
+
+O programa solicita ao usuário os valores de uma matriz 3x3. Em seguida, cria automaticamente a matriz identidade de mesma ordem e realiza a multiplicação entre a matriz original e a matriz identidade.
+
+O resultado da multiplicação é exibido no console, demonstrando que a matriz identidade atua como elemento neutro da multiplicação matricial, ou seja, a matriz resultante é igual à matriz original.
+
+## Funcionalidades
+
+* Leitura de uma matriz 3x3 via entrada padrão
+* Geração automática da matriz identidade
+* Multiplicação entre matriz original e matriz identidade
+* Exibição dos resultados no console
+
+## Tecnologias Utilizadas
+
+* Linguagem C
+* Compilador GCC
+
+## Como Executar
+
+1. Compile o programa:
+
+```bash
+gcc identidade.c -o identidade.exe
+```
+
+2. Execute o programa:
+
+```bash
+.\identidade.exe
+```
+
+## Estrutura do Projeto
+
+```
+identidade.c
+README.md
+```
+
+## Objetivo
+
+Este projeto foi desenvolvido com fins educacionais, com o objetivo de reforçar conceitos de matrizes, estruturas de repetição e operações matemáticas em linguagem C.
+
+## Autor
+
+João Vittor Mulinari
 
 
