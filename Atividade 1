@@ -93,3 +93,63 @@ int main() {
 
     return 0;
 }
+
+EXERCICIO 4
+//Feito por João Vittor Mulinari
+#include <stdio.h>
+
+int main() {
+    int matriz[3][3];
+    int identidade[3][3];
+    int resultado[3][3];
+    int i, j, k;
+
+    // Leitura da matriz original
+    printf("Digite os elementos da matriz 3x3:\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            printf("Elemento [%d][%d]: ", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    // Criando matriz identidade
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            if(i == j)
+                identidade[i][j] = 1;
+            else
+                identidade[i][j] = 0;
+        }
+    }
+
+    // Multiplicação matriz * identidade
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            resultado[i][j] = 0;
+            for(k = 0; k < 3; k++) {
+                resultado[i][j] += matriz[i][k] * identidade[k][j];
+            }
+        }
+    }
+
+    // Mostrar matriz identidade
+    printf("\nMatriz Identidade:\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            printf("%d ", identidade[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Mostrar resultado da multiplicação
+    printf("\nResultado da multiplicacao (Matriz * Identidade):\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            printf("%d ", resultado[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
