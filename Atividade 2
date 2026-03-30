@@ -1,1 +1,49 @@
+//Desafio 1
+//Feito Por Pierre e João Vittor Mulinari
 
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node {
+    char data;
+    struct Node* next;
+} Node;
+
+typedef struct {
+    Node* top;
+} Stack;
+
+void initStack(Stack* s) {
+    s->top = NULL;
+}
+
+int isEmpty(Stack* s) {
+    return s->top == NULL;
+}
+
+void push(Stack* s, char value) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+  
+    if (newNode == NULL) {
+        printf("Erro ao alocar memória!\n");
+        exit(1);
+    }
+  
+    newNode->data = value;
+    newNode->next = s->top;
+    s->top = newNode;
+}
+
+char pop(Stack* s) {
+    if (isEmpty(s)) {
+        return '\0';
+    }
+  
+    Node* temp = s->top;
+    char popped = temp->data;
+  
+    s->top = s->top->next;
+    free(temp);
+  
+    return popped;
+}
