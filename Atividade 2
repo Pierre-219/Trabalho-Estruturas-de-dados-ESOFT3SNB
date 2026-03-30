@@ -47,3 +47,52 @@ char pop(Stack* s) {
   
     return popped;
 }
+int isBalanced(char* expr) {
+    Stack s;
+    initStack(&s);
+   
+    for (int i = 0; expr[i] != '\0'; i++) {
+        char c = expr[i];
+       
+        if (c == '(' || c == '{' || c == '[') {
+            push(&s, c);
+        }
+        else if (c == ')' || c == '}' || c == ']') {
+           
+            if (isEmpty(&s)) {
+                return 0;
+            }
+           
+            char top = pop(&s);
+           
+            if ((c == ')' && top != '(') ||
+                (c == '}' && top != '{') ||
+                (c == ']' && top != '[')) {
+                return 0;
+            }
+        }
+    }
+   
+    return isEmpty(&s);
+}
+
+int main() {
+    char expressao[100];
+   
+    printf("Digite a expressao: ");
+    fgets(expressao, sizeof(expressao), stdin);
+   
+    int i = 0;
+    while (expressao[i] != '\0' && expressao[i] != '\n') {
+        i++;
+    }
+    expressao[i] = '\0';
+   
+    if (isBalanced(expressao)) {
+        printf("A expressao esta VALIDA!\n");
+    } else {
+        printf("A expressao esta INVALIDA!\n");
+    }
+   
+    return 0;
+}
