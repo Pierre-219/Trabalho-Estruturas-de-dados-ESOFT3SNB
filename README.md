@@ -124,3 +124,20 @@ Este projeto foi desenvolvido com fins educacionais, com o objetivo de reforçar
 João Vittor Mulinari
 
 
+EXERCICIO:7
+Criamos uma struct Livro com título, autor e ano.
+Usamos um vetor de 5 livros (livros[TAM]).
+fgets é usado para ler strings com espaços (melhor que scanf).
+strcspn remove o \n que o fgets captura.
+strcmp compara o título digitado com os títulos armazenados.
+Se encontrar, mostra os dados do livro
+
+EXERCICIO 8:
+int *p; é um ponteiro para inteiro.
+p = vetor; faz o ponteiro apontar para o primeiro elemento do array.
+(p + i) acessa a posição i do vetor usando aritmética de ponteiros.
+*(p + i) acessa o valor armazenado nessa posição.
+Multiplicamos por 2 para mostrar o dobro.
+
+EXERCICIO 7 E 8:  Bruno de Carvalho
+
