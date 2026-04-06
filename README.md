@@ -124,6 +124,138 @@ README.md
 
 Este projeto foi desenvolvido com fins educacionais, com o objetivo de reforçar conceitos de matrizes, estruturas de repetição e operações matemáticas em linguagem C.
 
+Exercicio 5
+QUESTÃO 5 — Vetor × Colunas da Matriz
+ Ideia principal
+
+Você tem:
+
+um vetor com 3 valores
+uma matriz 3x3
+
+E precisa:
+ multiplicar o vetor por cada coluna da matriz
+
+ Exemplo prático
+
+Se o vetor for:
+
+[2, 3, 4]
+
+E a matriz:
+
+1  2  3
+4  5  6
+7  8  9
+ Resultado será:
+Coluna 0:
+2*1 + 3*4 + 4*7 = 2 + 12 + 28 = 42
+Coluna 1:
+2*2 + 3*5 + 4*8 = 4 + 15 + 32 = 51
+Coluna 2:
+2*3 + 3*6 + 4*9 = 6 + 18 + 36 = 60
+
+ Resultado final:
+
+[42, 51, 60]
+ Entendendo o código
+1. Declaração
+int vetor[3];
+int matriz[3][3];
+int resultado[3] = {0, 0, 0};
+vetor → entrada
+matriz → entrada
+resultado → começa zerado (importante para somar depois)
+2. Parte mais importante (lógica)
+for (int j = 0; j < 3; j++) {
+    for (int i = 0; i < 3; i++) {
+        resultado[j] += vetor[i] * matriz[i][j];
+    }
+}
+ Como ler isso corretamente:
+j = coluna da matriz
+i = linha
+ Tradução:
+
+Para cada coluna j, percorra todas as linhas i e faça:
+
+vetor[i] × elemento da matriz naquela coluna
+ Ponto que mais confunde
+
+ matriz[i][j]
+
+i → linha
+j → coluna
+
+Você está fixando a coluna (j) e andando nas linhas.
+Exercicio 6
+deia principal
+
+Você:
+
+Lê 10 alunos
+Separa em:
+aprovados (≥ 5.0)
+reprovados (< 5.0)
+Mostra os dois grupos
+ Parte 1 — Struct
+struct Aluno {
+    char nome[50];
+    int matricula;
+    float media;
+};
+
+ Isso cria um “tipo de dado personalizado”
+
+Cada aluno tem:
+
+nome
+matrícula
+média
+ Parte 2 — Vetores
+struct Aluno alunos[10];
+struct Aluno aprovados[10];
+struct Aluno reprovados[10];
+alunos → todos
+aprovados → filtrados
+reprovados → filtrados
+ Parte 3 — Entrada de dados
+scanf(" %[^\n]", alunos[i].nome);
+
+ Isso permite ler nome com espaço (ex: "João Silva")
+
+ Parte 4 — Separação (ESSENCIAL)
+if (alunos[i].media >= 5.0) {
+    aprovados[contAprov++] = alunos[i];
+} else {
+    reprovados[contReprov++] = alunos[i];
+}
+ Entendendo isso:
+ contAprov++
+usa o valor atual
+depois soma 1
+
+ Exemplo:
+
+começa em 0
+salva em aprovados[0]
+depois vira 1
+ Tradução da lógica:
+
+“Se passou, coloca no vetor de aprovados e avança a posição”
+
+ Parte 5 — Impressão
+for (int i = 0; i < contAprov; i++)
+
+ Só percorre o que foi realmente preenchido
+
+ Erro comum (importante)
+
+Se você fizer:
+
+for (int i = 0; i < 10; i++)
+
+ vai imprimir lixo (dados não preenchidos)
 
 EXERCICIO:7
 Criamos uma struct Livro com título, autor e ano.
