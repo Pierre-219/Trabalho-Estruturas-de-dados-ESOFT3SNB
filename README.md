@@ -35,9 +35,10 @@ e como queremos uma ordem inversa começamos pelo maior numero e utilizamos i-- 
 
 O exercício 2 apresenta as mesmas utilizações do for para funcionalidade do codigo assim como foi explicado na versao alternativa do exercicio 1, a diferença e que no exercicio 1 usamos apenas uma lista para armazenar e ler os numeros , no exercio 1 original usamos 3 listas para cada palavra a ser escrita e no exercio 1 alternativo temos o vetor bidimensional, que deixa o codigo com menos repetição de comandos.  
 
-## Autor
+# Exercicios 3 e 4 explicação:
 
-João Vittor Mulinari
+## João Vittor Mulinari
+
 ## Exercício 3
 # Programa em C - Matriz 3x3
 Este projeto consiste em um programa desenvolvido em linguagem C que realiza a leitura de uma matriz 3x3, aplica uma operação de multiplicação em todos os seus elementos e exibe o resultado.
@@ -119,6 +120,8 @@ gcc identidade.c -o identidade.exe
 identidade.c
 README.md
 ```
+
+# Exercicios 5 e 6 explicação:
 
 ## Feito Por:
 
@@ -259,6 +262,10 @@ for (int i = 0; i < 10; i++)
 
  vai imprimir lixo (dados não preenchidos)
 
+# Exercicios 7 e 8 explicação:
+
+## Bruno
+
 ## EXERCICIO:7
 Criamos uma struct Livro com título, autor e ano.
 Usamos um vetor de 5 livros (livros[TAM]).
@@ -274,11 +281,12 @@ p = vetor; faz o ponteiro apontar para o primeiro elemento do array.
 *(p + i) acessa o valor armazenado nessa posição.
 Multiplicamos por 2 para mostrar o dobro.
 
-# EXERCICIO 7 E 8:  Bruno de Carvalho
+## EXERCICIO 7 E 8:  Bruno de Carvalho
 
-# Exercicios 9 e 10 por:
+# Exercicios 9 e 10:
+
+## Por:
 
 ## Exercicio 9:
 
 ## Exerciio 10:
-
