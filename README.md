@@ -274,5 +274,11 @@ p = vetor; faz o ponteiro apontar para o primeiro elemento do array.
 *(p + i) acessa o valor armazenado nessa posição.
 Multiplicamos por 2 para mostrar o dobro.
 
-EXERCICIO 7 E 8:  Bruno de Carvalho
+# EXERCICIO 7 E 8:  Bruno de Carvalho
+
+# Exercicios 9 e 10 por:
+
+## Exercicio 9:
+
+## Exerciio 10:
 
