@@ -35,6 +35,9 @@ e como queremos uma ordem inversa começamos pelo maior numero e utilizamos i-- 
 
 O exercício 2 apresenta as mesmas utilizações do for para funcionalidade do codigo assim como foi explicado na versao alternativa do exercicio 1, a diferença e que no exercicio 1 usamos apenas uma lista para armazenar e ler os numeros , no exercio 1 original usamos 3 listas para cada palavra a ser escrita e no exercio 1 alternativo temos o vetor bidimensional, que deixa o codigo com menos repetição de comandos.  
 
+## Autor
+
+João Vittor Mulinari
 ## Exercício 3
 # Programa em C - Matriz 3x3
 Este projeto consiste em um programa desenvolvido em linguagem C que realiza a leitura de uma matriz 3x3, aplica uma operação de multiplicação em todos os seus elementos e exibe o resultado.
@@ -120,10 +123,6 @@ README.md
 ## Objetivo
 
 Este projeto foi desenvolvido com fins educacionais, com o objetivo de reforçar conceitos de matrizes, estruturas de repetição e operações matemáticas em linguagem C.
-
-## Autor
-
-João Vittor Mulinari
 
 
 EXERCICIO:7
