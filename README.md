@@ -120,11 +120,13 @@ identidade.c
 README.md
 ```
 
+## Feito Por:
+
 ## Objetivo
 
 Este projeto foi desenvolvido com fins educacionais, com o objetivo de reforçar conceitos de matrizes, estruturas de repetição e operações matemáticas em linguagem C.
 
-Exercicio 5
+## Exercicio 5
 QUESTÃO 5 — Vetor × Colunas da Matriz
  Ideia principal
 
@@ -188,7 +190,7 @@ i → linha
 j → coluna
 
 Você está fixando a coluna (j) e andando nas linhas.
-Exercicio 6
+## Exercicio 6
 deia principal
 
 Você:
@@ -257,7 +259,7 @@ for (int i = 0; i < 10; i++)
 
  vai imprimir lixo (dados não preenchidos)
 
-EXERCICIO:7
+## EXERCICIO:7
 Criamos uma struct Livro com título, autor e ano.
 Usamos um vetor de 5 livros (livros[TAM]).
 fgets é usado para ler strings com espaços (melhor que scanf).
@@ -265,7 +267,7 @@ strcspn remove o \n que o fgets captura.
 strcmp compara o título digitado com os títulos armazenados.
 Se encontrar, mostra os dados do livro
 
-EXERCICIO 8:
+## EXERCICIO 8:
 int *p; é um ponteiro para inteiro.
 p = vetor; faz o ponteiro apontar para o primeiro elemento do array.
 (p + i) acessa a posição i do vetor usando aritmética de ponteiros.
