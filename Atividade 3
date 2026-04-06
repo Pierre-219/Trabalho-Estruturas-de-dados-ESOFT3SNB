@@ -1,1 +1,65 @@
+// Desafio 1
+#include <stdio.h>
+#include <stdlib.h>
+
+// Struct do cliente
+typedef struct Cliente {
+    int id;
+    int tempoAtendimento;
+    struct Cliente* proximo;
+} Cliente;
+
+// Struct da fila
+typedef struct {
+    Cliente* inicio;
+    Cliente* fim;
+} Fila;
+
+// Inicializa a fila
+void initFila(Fila* f) {
+    f->inicio = NULL;
+    f->fim = NULL;
+}
+
+// Verifica se a fila está vazia
+int isEmpty(Fila* f) {
+    return f->inicio == NULL;
+}
+
+// Enfileirar
+void enqueue(Fila* f, int id, int tempo) {
+    Cliente* novo = (Cliente*) malloc(sizeof(Cliente));
+    if (novo == NULL) {
+        printf("Erro de memoria\n");
+        exit(1);
+    }
+
+    novo->id = id;
+    novo->tempoAtendimento = tempo;
+    novo->proximo = NULL;
+
+    if (isEmpty(f)) {
+        f->inicio = novo;
+        f->fim = novo;
+    } else {
+        f->fim->proximo = novo;
+        f->fim = novo;
+    }
+}
+
+// Desenfileirar
+Cliente* dequeue(Fila* f) {
+    if (isEmpty(f)) {
+        return NULL;
+    }
+
+    Cliente* temp = f->inicio;
+    f->inicio = temp->proximo;
+
+    if (f->inicio == NULL) {
+        f->fim = NULL;
+    }
+
+    return temp;
+}
 
