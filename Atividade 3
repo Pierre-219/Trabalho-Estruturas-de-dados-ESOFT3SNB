@@ -99,3 +99,143 @@ int main() {
 
     return 0;
 }
+
+//Desafio 2
+//Feito por Thaylor Primiera parte E segunda por Tonho
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estrutura do nó
+typedef struct No {
+    char dado;
+    struct No* prox;
+} No;
+
+// Estrutura da pilha
+typedef struct {
+    No* topo;
+} Pilha;
+
+// Inicializar pilha
+void inicializar(Pilha* p) {
+    p->topo = NULL;
+}
+
+// Empilhar
+void push(Pilha* p, char c) {
+    No* novo = (No*) malloc(sizeof(No));
+
+    if (novo == NULL) {
+        printf("Erro de memória\n");
+        return;
+    }
+
+    novo->dado = c;
+    novo->prox = p->topo;
+    p->topo = novo;
+}
+
+// Desempilhar
+char pop(Pilha* p) {
+    if (p->topo == NULL) {
+        return '\0';
+    }
+
+    No* temp = p->topo;
+    char valor = temp->dado;
+
+    p->topo = temp->prox;
+    free(temp);
+
+    return valor;
+}
+//Tonho colocar segunda parte
+//Desafio 3
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estrutura do documento
+typedef struct Documento {
+    int id;
+    int paginas;
+    int prioridade;
+    struct Documento* prox;
+} Documento;
+
+// Estrutura da fila
+typedef struct {
+    Documento* inicio;
+} Fila;
+
+// Inicializar fila
+void inicializar(Fila* f) {
+    f->inicio = NULL;
+}
+
+// Inserir com prioridade
+void inserir(Fila* f, int id, int paginas, int prioridade) {
+    Documento* novo = (Documento*) malloc(sizeof(Documento));
+
+    if (novo == NULL) {
+        printf("Erro de memoria\n");
+        return;
+    }
+
+    novo->id = id;
+    novo->paginas = paginas;
+    novo->prioridade = prioridade;
+    novo->prox = NULL;
+
+    // Inserir no início
+    if (f->inicio == NULL || prioridade < f->inicio->prioridade) {
+        novo->prox = f->inicio;
+        f->inicio = novo;
+        return;
+    }
+
+    Documento* atual = f->inicio;
+
+    // Manter ordem por prioridade (FIFO em empate)
+    while (atual->prox != NULL &&
+           atual->prox->prioridade <= prioridade) {
+        atual = atual->prox;
+    }
+
+    novo->prox = atual->prox;
+    atual->prox = novo;
+}
+
+// Remover da fila
+void remover(Fila* f) {
+    if (f->inicio == NULL) {
+        printf("Fila vazia\n");
+        return;
+    }
+
+    Documento* temp = f->inicio;
+
+    printf("\nImprimindo documento:\n");
+    printf("ID: %d | Paginas: %d | Prioridade: %d\n",
+           temp->id, temp->paginas, temp->prioridade);
+
+    f->inicio = temp->prox;
+    free(temp);
+}
+
+// Mostrar fila
+void mostrar(Fila* f) {
+    if (f->inicio == NULL) {
+        printf("Fila vazia\n");
+        return;
+    }
+
+    Documento* atual = f->inicio;
+
+    printf("\nFila de impressao:\n");
+    while (atual != NULL) {
+        printf("ID: %d | Paginas: %d | Prioridade: %d\n",
+               atual->id, atual->paginas, atual->prioridade);
+        atual = atual->prox;
+    }
+}
+//Tonho colocar segunda parte
