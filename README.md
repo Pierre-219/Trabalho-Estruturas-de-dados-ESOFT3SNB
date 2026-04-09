@@ -123,7 +123,7 @@ README.md
 
 # Exercicios 5 e 6 explicação:
 
-## Feito Por:
+## Feito Por:Thaylor de Mello Trapel
 
 ## Objetivo
 
