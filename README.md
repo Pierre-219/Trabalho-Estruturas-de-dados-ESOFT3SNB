@@ -33,7 +33,7 @@ e como queremos uma ordem inversa começamos pelo maior numero e utilizamos i-- 
 
 ## Exercício 2
 
-O exercício 2 apresenta as mesmas utilizações do for para funcionalidade do codigo assim como foi explicado na versao alternativa do exercicio 1, a diferença e que no exercicio 1 usamos apenas uma lista para armazenar e ler os numeros , no exercio 1 original usamos 3 listas para cada palavra a ser escrita e no exercio 1 alternativo temos o vetor bidimensional, que deixa o codigo com menos repetição de comandos.  
+O exercício 2 apresenta as mesmas utilizações do for para funcionalidade do codigo assim como foi explicado na versao alternativa do exercicio 1, a diferença e que no exercicio 2 usamos apenas uma lista para armazenar e ler os numeros , no exercio 1 original usamos 3 listas para cada palavra a ser escrita e no exercio 1 alternativo temos o vetor bidimensional, que deixa o codigo com menos repetição de comandos.  
 
 # Exercicios 3 e 4 explicação:
 
