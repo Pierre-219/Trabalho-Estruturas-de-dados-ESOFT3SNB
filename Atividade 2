@@ -146,4 +146,28 @@ char pop(Pilha* p) {
 
     return valor;
 }
-//Tonho colocar segunda parte
+//segunda parte
+
+
+int main() {
+    Pilha p;
+    inicializar(&p);
+
+    char str[100];
+
+    printf("Digite uma string: ");
+    fgets(str, 100, stdin);
+
+    // Empilhar caracteres
+    for (int i = 0; str[i] != '\0'; i++) {
+        push(&p, str[i]);
+    }
+
+    // Desempilhar e mostrar invertido
+    printf("String invertida: ");
+    while (p.topo != NULL) {
+        printf("%c", pop(&p));
+    }
+
+    return 0;
+}
