@@ -283,10 +283,35 @@ Multiplicamos por 2 para mostrar o dobro.
 
 ## EXERCICIO 7 E 8:  Bruno de Carvalho
 
-# Exercicios 9 e 10:
+# Exercicios 9 e 10: Antônio Henrique Kviatcovski
 
-## Por:
+## Por: Antônio
 
 ## Exercicio 9:
+Função ordenaTres recebe os 3 números por referência (ponteiros).
+ela reorganiza os números do menor ao maior.
+Depois, retorna 1 se os 3 forem iguais, ou 0 se forem diferentes.
+No main Pede os 3 números, chama a função para ordenar e mostra o resultado.
+
+Exemplo:
+
+Digite três valores inteiros: 8 3 5
+O que a função faz internamente:
+
+Antes: 8, 3, 5
+Depois da ordenação: 3, 5, 8
+
 
 ## Exerciio 10:
+
+Primeiro:  define uma struct Aluno com nome e nota.
+A função maiorNota recebe o vetor de alunos e percorre ele usando ponteiros para encontrar o aluno com a maior nota.
+Ela retorna o endereço desse aluno.
+
+No main:
+Lê a quantidade de alunos (n).
+Reserva memória dinamicamente com malloc para guardar os alunos.
+Lê nome (usando fgets) e nota de cada aluno.
+Chama a função maiorNota para encontrar o melhor aluno.
+Mostra o nome e a nota do aluno com maior nota.
+Libera a memória com free.
