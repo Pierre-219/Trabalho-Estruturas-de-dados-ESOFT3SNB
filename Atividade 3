@@ -188,4 +188,55 @@ void mostrar(Fila* f) {
         atual = atual->prox;
     }
 }
-//Tonho colocar segunda parte
+// segunda parte
+
+int main() {
+    Fila f;
+    inicializar(&f);
+
+    int opcao;
+    int id, paginas, prioridade;
+
+    do {
+        printf("\n===== MENU =====\n");
+        printf("1 - Inserir documento\n");
+        printf("2 - Imprimir proximo\n");
+        printf("3 - Mostrar fila\n");
+        printf("0 - Sair\n");
+        printf("Escolha: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Digite o ID: ");
+                scanf("%d", &id);
+
+                printf("Numero de paginas: ");
+                scanf("%d", &paginas);
+
+                printf("Prioridade (menor = mais importante): ");
+                scanf("%d", &prioridade);
+
+                inserir(&f, id, paginas, prioridade);
+                break;
+
+            case 2:
+                remover(&f);
+                break;
+
+            case 3:
+                mostrar(&f);
+                break;
+
+            case 0:
+                printf("Saindo...\n");
+                break;
+
+            default:
+                printf("Opcao invalida!\n");
+        }
+
+    } while (opcao != 0);
+
+    return 0;
+}
