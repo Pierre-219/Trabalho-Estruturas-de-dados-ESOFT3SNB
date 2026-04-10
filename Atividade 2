@@ -96,3 +96,54 @@ int main() {
    
     return 0;
 }
+
+//Desafio 2
+//Feito por Thaylor Primiera parte E segunda por Tonho
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estrutura do nó
+typedef struct No {
+    char dado;
+    struct No* prox;
+} No;
+
+// Estrutura da pilha
+typedef struct {
+    No* topo;
+} Pilha;
+
+// Inicializar pilha
+void inicializar(Pilha* p) {
+    p->topo = NULL;
+}
+
+// Empilhar
+void push(Pilha* p, char c) {
+    No* novo = (No*) malloc(sizeof(No));
+
+    if (novo == NULL) {
+        printf("Erro de memória\n");
+        return;
+    }
+
+    novo->dado = c;
+    novo->prox = p->topo;
+    p->topo = novo;
+}
+
+// Desempilhar
+char pop(Pilha* p) {
+    if (p->topo == NULL) {
+        return '\0';
+    }
+
+    No* temp = p->topo;
+    char valor = temp->dado;
+
+    p->topo = temp->prox;
+    free(temp);
+
+    return valor;
+}
+//Tonho colocar segunda parte
