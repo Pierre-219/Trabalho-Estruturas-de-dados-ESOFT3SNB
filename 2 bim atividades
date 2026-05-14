@@ -1,1 +1,11 @@
 Pierre e Joao
+parte 1 
+#include <stdio.h>
+long long fib(int n, int *calls) {
+    (*calls)++;
+
+    if (n <= 1)
+        return n;
+
+    return fib(n - 1, calls) + fib(n - 2, calls);
+}
