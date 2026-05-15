@@ -1,1 +1,44 @@
+  Atividade 3  2º Bimestre
+Realizado por: Bruno de Carvalho ESOFT3S.
 
+#include <stdio.h>
+
+
+int resolverHanoi(int n, char origem, char destino, char auxiliar) {
+    if (n == 1) {
+        
+        printf("Mover disco 1 de %c para %c\n", origem, destino);
+        return 1;
+    }
+
+    int movimentos = 0;
+
+   
+    movimentos += resolverHanoi(n - 1, origem, auxiliar, destino);
+
+    
+    printf("Mover disco %d de %c para %c\n", n, origem, destino);
+    movimentos++;
+
+    
+    movimentos += resolverHanoi(n - 1, auxiliar, destino, origem);
+
+    return movimentos;
+}
+
+int main() {
+    int discos;
+
+    printf("Digite a quantidade de discos: ");
+    if (scanf("%d", &discos) != 1 || discos < 1) {
+        printf("Por favor, insira um numero inteiro positivo.\n");
+        return 1;
+    }
+
+    printf("\nMovimentos executados:\n");
+    int total = resolverHanoi(discos, 'A', 'C', 'B');
+
+    printf("\nNumero total de movimentos: %d\n", total);
+
+    return 0;
+}
