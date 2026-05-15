@@ -2,7 +2,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// --- FUNÇÃO ADICIONADA: Fibonacci Ingênuo (sem cache) ---
+long long fibonacciIngenuo(int n, long long *chamadas) {
+    (*chamadas)++;
 
+    if (n == 0) {
+        return 0;
+    }
+    if (n == 1) {
+        return 1;
+    }
+
+    return fibonacciIngenuo(n - 1, chamadas) + fibonacciIngenuo(n - 2, chamadas);
+}
+
+// Sua função memoizada (está correta!)
 long long fibonacciMemoizado(int n, long long *cache, long long *chamadas) {
     (*chamadas)++;
 
@@ -32,7 +46,10 @@ int main() {
     long long chamadasMemoizado = 0;
 
     printf("Digite o valor de n: ");
-    scanf("%d", &n);
+    if (scanf("%d", &n) != 1) { // Uma boa prática para validar a entrada
+        printf("Entrada invalida.\n");
+        return 1;
+    }
 
     if (n < 0) {
         printf("Valor invalido. Digite um numero maior ou igual a zero.\n");
@@ -52,6 +69,7 @@ int main() {
         cache[i] = -1;
     }
 
+    // Agora ambas as funções existem e vão rodar!
     long long resultadoIngenuo = fibonacciIngenuo(n, &chamadasIngenuo);
     long long resultadoMemoizado = fibonacciMemoizado(n, cache, &chamadasMemoizado);
 
