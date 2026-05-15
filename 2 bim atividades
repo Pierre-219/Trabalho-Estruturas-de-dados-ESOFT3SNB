@@ -1,6 +1,10 @@
 Pierre e Joao
 parte 1 
 #include <stdio.h>
+// Caso base: quando n <= 1, retorna o proprio n (fib(0)=0, fib(1)=1)
+// Reducao: a cada chamada, n diminui via fib(n-1) e fib(n-2) ate chegar no caso base
+// Contador: calls e um ponteiro para o inteiro do main, todas as chamadas incrementam o mesmo valor
+long long fib(int n, int *calls) {
 long long fib(int n, int *calls) {
     (*calls)++;
 
