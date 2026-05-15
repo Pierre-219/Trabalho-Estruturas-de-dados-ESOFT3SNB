@@ -1,1 +1,91 @@
 
+#include <stdio.h>
+#include <stdlib.h>
+
+/*
+Caso base:
+fib(0) = 0
+fib(1) = 1
+
+Redução do problema:
+fib(n) chama fib(n-1) e fib(n-2), diminuindo o valor de n até chegar no caso base.
+*/
+
+// Fibonacci ingênuo, sem otimização
+long long fibonacciIngenuo(int n, long long *chamadas) {
+    (*chamadas)++;
+
+    if (n == 0) {
+        return 0;
+    }
+
+    if (n == 1) {
+        return 1;
+    }
+
+    return fibonacciIngenuo(n - 1, chamadas) + fibonacciIngenuo(n - 2, chamadas);
+}
+
+// Fibonacci com memoização
+long long fibonacciMemoizado(int n, long long *cache, long long *chamadas) {
+    (*chamadas)++;
+
+    if (n == 0) {
+        return 0;
+    }
+
+    if (n == 1) {
+        return 1;
+    }
+
+    // Se o valor já foi calculado, retorna direto
+    if (cache[n] != -1) {
+        return cache[n];
+    }
+
+    // Calcula e guarda no cache
+    cache[n] = fibonacciMemoizado(n - 1, cache, chamadas) +
+               fibonacciMemoizado(n - 2, cache, chamadas);
+
+    return cache[n];
+}
+
+int main() {
+    int n;
+    long long chamadasIngenuo = 0;
+    long long chamadasMemoizado = 0;
+
+    printf("Digite o valor de n: ");
+    scanf("%d", &n);
+
+    if (n < 0) {
+        printf("Valor invalido. Digite um numero maior ou igual a zero.\n");
+        return 1;
+    }
+
+    // Alocação dinâmica do cache
+    long long *cache = malloc((n + 1) * sizeof(long long));
+
+    if (cache == NULL) {
+        printf("Erro ao alocar memoria.\n");
+        return 1;
+    }
+
+    // Inicializa o cache com -1
+    for (int i = 0; i <= n; i++) {
+        cache[i] = -1;
+    }
+
+    long long resultadoIngenuo = fibonacciIngenuo(n, &chamadasIngenuo);
+    long long resultadoMemoizado = fibonacciMemoizado(n, cache, &chamadasMemoizado);
+
+    printf("\nResultado Fibonacci ingenuo: %lld\n", resultadoIngenuo);
+    printf("Chamadas recursivas ingenuo: %lld\n", chamadasIngenuo);
+
+    printf("\nResultado Fibonacci memoizado: %lld\n", resultadoMemoizado);
+    printf("Chamadas recursivas memoizado: %lld\n", chamadasMemoizado);
+
+    free(cache);
+
+    return 0;
+}
