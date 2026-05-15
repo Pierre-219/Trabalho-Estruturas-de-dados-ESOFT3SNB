@@ -64,7 +64,15 @@ fibonacci.exe
 
 
 # Atividade 2
-## Thaylor e Antonio
+O programa calcula a sequência de Fibonacci de duas formas:
+Recursiva ingênua → recalcula vários valores repetidamente.
+Recursiva com memoização → guarda valores já calculados em um vetor para não repetir contas.
+
+O usuário digita um valor n, e o programa:
+calcula fib(n) nas duas versões;
+conta quantas chamadas recursivas cada uma fez;
+mostra que a versão memoizada é muito mais eficiente.
+A memoização usa um vetor alocado dinamicamente (malloc) para armazenar os resultados já calculados
 
 
 
