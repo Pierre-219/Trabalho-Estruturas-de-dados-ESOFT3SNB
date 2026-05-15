@@ -70,4 +70,17 @@ fibonacci.exe
 
 
 # Atividade 3
-## Bruno
+## Feito por: Bruno de Carvalho.
+
+O usuário digita a quantidade de discos e o programa mostra todos os movimentos necessários para levar os discos da torre A até a torre C, usando a torre B como auxiliar.
+A função resolverHanoi() funciona de forma recursiva:
+
+move os discos menores para a torre auxiliar;
+move o maior disco;
+depois move os discos menores para a torre final.
+
+
+O número mínimo de movimentos é:
+2^n - 1
+
+
