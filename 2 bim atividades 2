@@ -2,31 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-Caso base:
-fib(0) = 0
-fib(1) = 1
 
-Redução do problema:
-fib(n) chama fib(n-1) e fib(n-2), diminuindo o valor de n até chegar no caso base.
-*/
-
-// Fibonacci ingênuo, sem otimização
-long long fibonacciIngenuo(int n, long long *chamadas) {
-    (*chamadas)++;
-
-    if (n == 0) {
-        return 0;
-    }
-
-    if (n == 1) {
-        return 1;
-    }
-
-    return fibonacciIngenuo(n - 1, chamadas) + fibonacciIngenuo(n - 2, chamadas);
-}
-
-// Fibonacci com memoização
 long long fibonacciMemoizado(int n, long long *cache, long long *chamadas) {
     (*chamadas)++;
 
