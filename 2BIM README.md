@@ -17,6 +17,50 @@ chamadas realizadas para mostrar a ineficiência do método.
 Os mesmos valores são recalculados várias vezes. O número de chamadas
 cresce exponencialmente — `fib(40)` gera mais de 300 milhões de chamadas.
 
+Autor: João Vittor Mulinari
+# Fibonacci Recursivo em C
+
+Programa em C que calcula o número de Fibonacci utilizando recursão e mostra o total de chamadas recursivas realizadas.
+
+## Como funciona
+
+1. O usuário digita um número `n`
+2. O programa calcula `fib(n)`
+3. Exibe o resultado e o número de chamadas recursivas
+
+## Exemplo
+
+```text
+Digite n: 6
+
+fib(6) = 8
+Total de chamadas recursivas: 25
+```
+
+## Compilar
+
+```bash
+gcc fibonacci.c -o fibonacci
+```
+
+## Executar
+
+Linux/Mac:
+```bash
+./fibonacci
+```
+
+Windows:
+```bash
+fibonacci.exe
+```
+
+## Conceitos utilizados
+
+- Recursão
+- Ponteiros
+- Funções em C
+- Sequência de Fibonacci
 
 
 # Atividade 2
