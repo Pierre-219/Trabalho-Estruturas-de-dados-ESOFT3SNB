@@ -9,3 +9,16 @@ long long fib(int n, int *calls) {
 
     return fib(n - 1, calls) + fib(n - 2, calls);
 }
+int main() {
+    int n;
+    printf("Digite n: ");
+    scanf("%d", &n);
+
+    int calls = 0;
+    long long resultado = fib(n, &calls);
+
+    printf("fib(%d) = %lld\n", n, resultado);
+    printf("Total de chamadas recursivas: %d\n", calls);
+
+    return 0;
+}
