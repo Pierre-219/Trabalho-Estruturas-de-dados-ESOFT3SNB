@@ -1,1 +1,65 @@
+# Parte 3
+## feito por:João Vittor Mulinari
+#include <stdio.h>
+#include <stdlib.h>
 
+// Estrutura do nó
+typedef struct No {
+    int valor;
+    struct No *prox;
+} No;
+
+// Função para inverter a lista
+void inverterLista(No **head) {
+    No *anterior = NULL;
+    No *atual = *head;
+    No *proximo = NULL;
+
+    while (atual != NULL) {
+        proximo = atual->prox;   // guarda o próximo nó
+        atual->prox = anterior;  // inverte o ponteiro
+
+        anterior = atual;        // avança anterior
+        atual = proximo;         // avança atual
+    }
+
+    *head = anterior;
+}
+
+// Função auxiliar para criar nó
+No* criarNo(int valor) {
+    No *novo = (No*) malloc(sizeof(No));
+    novo->valor = valor;
+    novo->prox = NULL;
+    return novo;
+}
+
+// Função para imprimir lista
+void imprimir(No *head) {
+    No *atual = head;
+
+    while (atual != NULL) {
+        printf("%d -> ", atual->valor);
+        atual = atual->prox;
+    }
+
+    printf("NULL\n");
+}
+
+int main() {
+    // Criando lista: 10 -> 20 -> 30 -> NULL
+    No *head = criarNo(10);
+    head->prox = criarNo(20);
+    head->prox->prox = criarNo(30);
+
+    printf("Lista original:\n");
+    imprimir(head);
+
+    // Invertendo lista
+    inverterLista(&head);
+
+    printf("Lista invertida:\n");
+    imprimir(head);
+
+    return 0;
+}
