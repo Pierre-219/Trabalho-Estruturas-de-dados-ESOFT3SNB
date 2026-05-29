@@ -1,1 +1,157 @@
+Feito por Bruno de Carvalho
 
+#include <stdio.h>
+#include <stdlib.h>
+
+/* Estrutura do nó */
+typedef struct No {
+    char musica[100];
+    struct No *prox;
+    struct No *ant;
+} No;
+
+/* Copia string sem usar string.h */
+void copiarTexto(char destino[], char origem[]) {
+    int i = 0;
+
+    while (origem[i] != '\0') {
+        destino[i] = origem[i];
+        i++;
+    }
+
+    destino[i] = '\0';
+}
+
+/* Adiciona música ao final da playlist */
+void adicionarMusica(No **head, char *nome) {
+    No *novo = (No *) malloc(sizeof(No));
+
+    if (novo == NULL) {
+        printf("Erro de alocacao!\n");
+        return;
+    }
+
+    copiarTexto(novo->musica, nome);
+
+    /* Caso lista vazia */
+    if (*head == NULL) {
+        novo->prox = novo;
+        novo->ant = novo;
+        *head = novo;
+    } else {
+        No *ultimo = (*head)->ant;
+
+        novo->prox = *head;
+        novo->ant = ultimo;
+
+        ultimo->prox = novo;
+        (*head)->ant = novo;
+    }
+}
+
+/* Avança para próxima música */
+void proximaMusica(No **atual) {
+    if (*atual != NULL) {
+        *atual = (*atual)->prox;
+    }
+}
+
+/* Volta para música anterior */
+void musicaAnterior(No **atual) {
+    if (*atual != NULL) {
+        *atual = (*atual)->ant;
+    }
+}
+
+/* Exibe toda playlist */
+void exibirPlaylist(No *head) {
+    if (head == NULL) {
+        printf("Playlist vazia!\n");
+        return;
+    }
+
+    No *temp = head;
+
+    printf("\nPlaylist:\n");
+
+    do {
+        printf("[%s] <-> ", temp->musica);
+        temp = temp->prox;
+    } while (temp != head);
+
+    printf("(volta ao inicio)\n");
+}
+
+/* Retorna total de músicas */
+int totalMusicas(No *head) {
+    if (head == NULL) {
+        return 0;
+    }
+
+    int total = 0;
+    No *temp = head;
+
+    do {
+        total++;
+        temp = temp->prox;
+    } while (temp != head);
+
+    return total;
+}
+
+/* Libera memória da playlist */
+void liberarPlaylist(No **head) {
+    if (*head == NULL) {
+        return;
+    }
+
+    No *temp = (*head)->prox;
+
+    while (temp != *head) {
+        No *aux = temp;
+        temp = temp->prox;
+        free(aux);
+    }
+
+    free(*head);
+    *head = NULL;
+}
+
+/* Programa principal */
+int main() {
+    No *playlist = NULL;
+    No *atual = NULL;
+
+    adicionarMusica(&playlist, "Rock");
+    adicionarMusica(&playlist, "Jazz");
+    adicionarMusica(&playlist, "Pop");
+    adicionarMusica(&playlist, "Blues");
+
+    exibirPlaylist(playlist);
+
+    printf("\nTotal de musicas: %d\n", totalMusicas(playlist));
+
+    /* Inicia reprodução */
+    atual = playlist;
+
+    printf("\nTocando musicas:\n");
+
+    /* Controle para evitar loop infinito */
+    int total = totalMusicas(playlist);
+    int i;
+
+    for (i = 0; i < total; i++) {
+        printf("Tocando: %s\n", atual->musica);
+        proximaMusica(&atual);
+    }
+
+    printf("\nVoltando uma musica:\n");
+
+    musicaAnterior(&atual);
+
+    printf("Musica atual: %s\n", atual->musica);
+
+    liberarPlaylist(&playlist);
+
+    return 0;
+}
