@@ -1,1 +1,47 @@
 
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estrutura do nó
+typedef struct No {
+    int valor;
+    struct No *prox;
+} No;
+
+// Função de busca
+int buscarValor(No *head, int valor) {
+    int posicao = 0;
+    No *atual = head;
+
+    while (atual != NULL) {
+        if (atual->valor == valor) {
+            return posicao;
+        }
+
+        atual = atual->prox;
+        posicao++;
+    }
+
+    return -1;
+}
+
+// Função auxiliar para criar nó
+No* criarNo(int valor) {
+    No *novo = (No*) malloc(sizeof(No));
+    novo->valor = valor;
+    novo->prox = NULL;
+    return novo;
+}
+
+int main() {
+    // Criando lista: 10 -> 20 -> 30 -> NULL
+    No *head = criarNo(10);
+    head->prox = criarNo(20);
+    head->prox->prox = criarNo(30);
+
+    int resultado = buscarValor(head, 20);
+
+    printf("Posicao encontrada: %d\n", resultado);
+
+    return 0;
+}
