@@ -15,6 +15,8 @@ Depois: 10 -> 99 -> 20 -> 30 -> NULL  (inserção na posição 1)
 
 ## Parte 2:
 **Responsavel**:Thaylor
+
+
 A função `buscarValor()` serve para procurar um número dentro de uma lista encadeada. Ela começa no primeiro nó da lista (`head`) e vai percorrendo os próximos nós um por um. A cada nó, compara o valor armazenado com o valor que está sendo procurado. Se encontrar, retorna a posição onde o valor está. Se chegar ao final da lista (`NULL`) sem encontrar o valor, retorna `-1`, indicando que ele não existe na lista. Por exemplo, na lista `10 -> 20 -> 30 -> NULL`, ao procurar o valor `20`, a função retorna `1`, pois ele está na segunda posição da lista (contando a partir de 0).
 
 
