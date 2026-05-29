@@ -1,1 +1,79 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+typedef struct No {
+    int valor;
+    struct No *prox;
+} No;
+
+void dividirLista(No *head, No **lista1, No **lista2) {
+
+    if (head == NULL) {
+        *lista1 = NULL;
+        *lista2 = NULL;
+        return;
+    }
+
+    No *lento = head;
+    No *rapido = head;
+    No *anterior = NULL;
+
+    while (rapido != NULL && rapido->prox != NULL) {
+        anterior = lento;
+        lento = lento->prox;
+        rapido = rapido->prox->prox;
+    }
+
+    if (rapido != NULL) {
+        *lista1 = head;
+        *lista2 = lento->prox;
+        lento->prox = NULL;
+    }
+    else {
+        *lista1 = head;
+        *lista2 = lento;
+
+        if (anterior != NULL) {
+            anterior->prox = NULL;
+        }
+    }
+}
+
+No* inserir(No *head, int valor) {
+    No *novo = (No*) malloc(sizeof(No));
+    novo->valor = valor;
+    novo->prox = head;
+    return novo;
+}
+
+void imprimir(No *head) {
+    while (head != NULL) {
+        printf("%d -> ", head->valor);
+        head = head->prox;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+
+    No *lista = NULL;
+
+    lista = inserir(lista, 50);
+    lista = inserir(lista, 40);
+    lista = inserir(lista, 30);
+    lista = inserir(lista, 20);
+    lista = inserir(lista, 10);
+
+    No *lista1 = NULL;
+    No *lista2 = NULL;
+
+    dividirLista(lista, &lista1, &lista2);
+
+    printf("Lista 1:\n");
+    imprimir(lista1);
+
+    printf("Lista 2:\n");
+    imprimir(lista2);
+
+    return 0;
+}
