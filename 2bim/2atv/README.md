@@ -43,4 +43,77 @@ Depois:
 **Responsavel**:
 
 ## Parte 5:
-**Responsavel**:
+Bruno de carvalho:
+
+# README - Playlist em C
+
+## Descrição
+Este programa em C implementa uma playlist de músicas utilizando uma lista duplamente encadeada circular.
+
+A playlist permite navegar entre as músicas de forma contínua, avançando para a próxima ou retornando para a anterior.
+
+--------------------------------------------------
+
+## Funcionalidades
+- Adicionar músicas na playlist
+- Exibir todas as músicas
+- Avançar para a próxima música
+- Voltar para a música anterior
+- Contar total de músicas
+- Liberar memória da lista
+
+--------------------------------------------------
+
+## Estrutura Utilizada
+
+typedef struct No {
+    char musica[100];
+    struct No *prox;
+    struct No *ant;
+} No;
+
+Campos:
+- musica → nome da música
+- prox → ponteiro para próxima música
+- ant → ponteiro para música anterior
+
+--------------------------------------------------
+
+## Conceitos Utilizados
+- Structs
+- Ponteiros
+- Alocação dinâmica com malloc
+- Liberação de memória com free
+- Lista duplamente encadeada circular
+
+--------------------------------------------------
+
+## Compilação
+
+gcc playlist.c -o playlist
+
+--------------------------------------------------
+
+## Execução
+
+Windows:
+playlist.exe
+
+Linux/Mac:
+./playlist
+
+--------------------------------------------------
+
+## Exemplo de Saída
+
+Playlist:
+[Rock] <-> [Jazz] <-> [Pop] <-> [Blues]
+
+Total de musicas: 4
+
+Tocando: Rock
+Tocando: Jazz
+Tocando: Pop
+Tocando: Blues
+
+Musica atual: Blues
