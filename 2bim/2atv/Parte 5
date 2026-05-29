@@ -1,7 +1,5 @@
 Feito por Bruno de Carvalho
 
-#include <stdio.h>
-#include <stdlib.h>
 
 /* Estrutura do nó */
 typedef struct No {
