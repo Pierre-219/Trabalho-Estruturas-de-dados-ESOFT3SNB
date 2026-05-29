@@ -45,7 +45,11 @@ Depois:
 
 ## Parte 4:
 Antônio Henrique Kviatcovski:
-A função dividirLista(No *head, No **lista1, No **lista2) tem como objetivo dividir uma lista encadeada em duas partes. Para isso, ela utiliza dois ponteiros: um ponteiro lento, que avança um nó por vez, e um ponteiro rápido, que avança dois nós por vez. Enquanto o ponteiro rápido percorre a lista, o lento se aproxima do meio. Quando o rápido chega ao final, o lento está posicionado no ponto de divisão da lista. Em seguida, o código separa a estrutura em duas listas independentes. Por exemplo, em uma lista 10 -> 20 -> 30 -> 40 -> 50 -> NULL, a primeira lista resultante será 10 -> 20 -> 30 -> NULL e a segunda será 40 -> 50 -> NULL. Caso a quantidade de elementos seja ímpar, a primeira lista ficará com um elemento a mais. Essa abordagem é eficiente porque encontra o ponto de divisão sem precisar contar os elementos, percorrendo a lista apenas uma vez.
+
+A função dividirLista(No *head, No **lista1, No **lista2) tem como objetivo dividir uma lista encadeada em duas partes. Para isso, ela utiliza dois ponteiros: um ponteiro lento, que avança um nó por vez, e um ponteiro rápido, que avança dois nós por vez. 
+Enquanto o ponteiro rápido percorre a lista, o lento se aproxima do meio. Quando o rápido chega ao final, o lento está posicionado no ponto de divisão da lista. Em seguida, o código separa a estrutura em duas listas independentes.
+
+Por exemplo, em uma lista 10 -> 20 -> 30 -> 40 -> 50 -> NULL, a primeira lista resultante será 10 -> 20 -> 30 -> NULL e a segunda será 40 -> 50 -> NULL. Caso a quantidade de elementos seja ímpar, a primeira lista ficará com um elemento a mais. Essa abordagem é eficiente porque encontra o ponto de divisão sem precisar contar os elementos, percorrendo a lista apenas uma vez.
 
 
 ## Parte 5:
