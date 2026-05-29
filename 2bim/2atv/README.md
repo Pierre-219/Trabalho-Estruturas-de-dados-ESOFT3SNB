@@ -17,7 +17,27 @@ Depois: 10 -> 99 -> 20 -> 30 -> NULL  (inserção na posição 1)
 **Responsavel**:
 
 ## Parte 3:
-**Responsavel**:
+**Responsavel**: João Vittor Mulinari
+# Inversão de Lista Encadeada em C
+Este programa implementa a inversão de uma lista encadeada simples utilizando apenas ponteiros, sem criar uma nova lista ou utilizar vetores auxiliares.
+## Funcionalidade
+A função `inverterLista()` percorre a lista e altera a direção dos ponteiros, invertendo completamente a ordem dos elementos.
+
+### Exemplo
+Antes:
+```txt
+10 -> 20 -> 30 -> NULL
+```
+Depois:
+```txt
+30 -> 20 -> 10 -> NULL
+```
+## Conceitos Utilizados
+* Estruturas (`struct`)
+* Ponteiros
+* Listas encadeadas
+* Manipulação de memória dinâmica
+* Algoritmo de inversão de lista
 
 ## Parte 4:
 **Responsavel**:
