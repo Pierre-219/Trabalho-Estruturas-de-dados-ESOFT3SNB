@@ -35,9 +35,8 @@ void inicializar_tabela(TabelaHash *tabela) {
     tabela->total_colisoes = 0;
 }
 
-// =============================================
+
 // PESSOA 2 — Inserção
-// =============================================
 
 void inserir(TabelaHash *tabela, const char *palavra, const char *definicao) {
     unsigned int indice = funcao_hash(palavra);
@@ -75,9 +74,7 @@ void inserir(TabelaHash *tabela, const char *palavra, const char *definicao) {
     printf("Palavra \"%s\" inserida no índice %u.\n", palavra, indice);
 }
 
-// =============================================
 // PESSOA 3 — Busca e Remoção
-// =============================================
 
 No *buscar(TabelaHash *tabela, const char *palavra) {
     unsigned int indice = funcao_hash(palavra);
@@ -117,9 +114,7 @@ int remover(TabelaHash *tabela, const char *palavra) {
     return 0;
 }
 
-// =============================================
 // PESSOA 4 — Exibição da Tabela
-// =============================================
 
 void exibir_tabela(TabelaHash *tabela) {
     printf("        TABELA HASH - DICIONARIO\n");
@@ -141,9 +136,8 @@ void exibir_tabela(TabelaHash *tabela) {
     }
 }
 
-// =============================================
+
 // PESSOA 5 — Estatísticas, Liberação e Main
-// =============================================
 
 void exibir_estatisticas(TabelaHash *tabela) {
     int buckets_usados = 0;
