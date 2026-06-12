@@ -74,6 +74,44 @@ void inserir(TabelaHash *tabela, const char *palavra, const char *definicao) {
     printf("Palavra \"%s\" inserida no índice %u.\n", palavra, indice);
 }
 Parte 3
+No *buscar(TabelaHash *tabela, const char *palavra) {
+    unsigned int indice = funcao_hash(palavra);
+    No *atual = tabela->buckets[indice];
+
+    while (atual != NULL) {
+        if (strcmp(atual->palavra, palavra) == 0) {
+            return atual;
+        }
+        atual = atual->proximo;
+    }
+    return NULL;
+}
+
+int remover(TabelaHash *tabela, const char *palavra) {
+    unsigned int indice = funcao_hash(palavra);
+    No *atual = tabela->buckets[indice];
+    No *anterior = NULL;
+
+    while (atual != NULL) {
+        if (strcmp(atual->palavra, palavra) == 0) {
+            if (anterior == NULL) {
+                tabela->buckets[indice] = atual->proximo;
+            } else {
+                anterior->proximo = atual->proximo;
+            }
+            free(atual);
+            tabela->total_elementos--;
+            printf("Palavra \"%s\" removida.\n", palavra);
+            return 1;
+        }
+        anterior = atual;
+        atual = atual->proximo;
+    }
+
+    printf("Palavra \"%s\" não encontrada.\n", palavra);
+    return 0;
+}
+
 Parte 4
 Código feito por João Vittor Mulinari
 
