@@ -41,4 +41,119 @@ Parte 2
 Parte 3
 Parte 4
 Parte 5
+Código feito por Antônio Henrique Kviatcovski 
+
+void exibir_estatisticas(TabelaHash *tabela) {
+    int buckets_usados = 0;
+    int maior_lista = 0;
+
+    for (int i = 0; i < TAMANHO_TABELA; i++) {
+        if (tabela->buckets[i] != NULL) {
+            buckets_usados++;
+            int tamanho = 0;
+            No *atual = tabela->buckets[i];
+            while (atual != NULL) {
+                tamanho++;
+                atual = atual->proximo;
+            }
+            if (tamanho > maior_lista) maior_lista = tamanho;
+        }
+    }
+
+    float fator_carga = (float)tabela->total_elementos / TAMANHO_TABELA;
+
+    printf("           ESTATISTICAS\n");
+    printf("Tamanho da tabela   : %d buckets\n", TAMANHO_TABELA);
+    printf("Elementos inseridos : %d\n", tabela->total_elementos);
+    printf("Buckets ocupados    : %d\n", buckets_usados);
+    printf("Total de colisoes   : %d\n", tabela->total_colisoes);
+    printf("Fator de carga      : %.2f\n", fator_carga);
+    printf("Maior lista encad.  : %d elemento(s)\n", maior_lista);
+}
+
+void liberar_tabela(TabelaHash *tabela) {
+    for (int i = 0; i < TAMANHO_TABELA; i++) {
+        No *atual = tabela->buckets[i];
+        while (atual != NULL) {
+            No *temp = atual;
+            atual = atual->proximo;
+            free(temp);
+        }
+        tabela->buckets[i] = NULL;
+    }
+}
+
+int main() {
+    TabelaHash tabela;
+    inicializar_tabela(&tabela);
+
+    int opcao;
+    char palavra[TAM_PALAVRA];
+    char definicao[TAM_DEFINICAO];
+    No *resultado;
+
+    printf("=== DICIONARIO COM TABELA HASH ===\n\n");
+
+    do {
+        printf("1 - Inserir palavra\n");
+        printf("2 - Buscar palavra\n");
+        printf("3 - Remover palavra\n");
+        printf("4 - Exibir tabela\n");
+        printf("5 - Exibir estatisticas\n");
+        printf("0 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+        getchar();
+
+        switch (opcao) {
+            case 1:
+                printf("Palavra: ");
+                fgets(palavra, TAM_PALAVRA, stdin);
+                palavra[strcspn(palavra, "\n")] = '\0';
+                printf("Definicao: ");
+                fgets(definicao, TAM_DEFINICAO, stdin);
+                definicao[strcspn(definicao, "\n")] = '\0';
+                inserir(&tabela, palavra, definicao);
+                break;
+
+            case 2:
+                printf("Palavra para buscar: ");
+                fgets(palavra, TAM_PALAVRA, stdin);
+                palavra[strcspn(palavra, "\n")] = '\0';
+                resultado = buscar(&tabela, palavra);
+                if (resultado != NULL)
+                    printf("Encontrada: \"%s\" -> %s\n", resultado->palavra, resultado->definicao);
+                else
+                    printf("Palavra \"%s\" nao encontrada.\n", palavra);
+                break;
+
+            case 3:
+                printf("Palavra para remover: ");
+                fgets(palavra, TAM_PALAVRA, stdin);
+                palavra[strcspn(palavra, "\n")] = '\0';
+                remover(&tabela, palavra);
+                break;
+
+            case 4:
+                exibir_tabela(&tabela);
+                break;
+
+            case 5:
+                exibir_estatisticas(&tabela);
+                break;
+
+            case 0:
+                printf("Encerrando...\n");
+                break;
+
+            default:
+                printf("Opcao invalida.\n");
+        }
+
+        printf("\n");
+    } while (opcao != 0);
+
+    liberar_tabela(&tabela);
+    return 0;
+}
 
