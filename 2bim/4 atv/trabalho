@@ -1,1 +1,382 @@
+# Trabalho – Estruturas Avançadas de Árvores
 
+**Disciplina:** Estrutura de Dados  
+**Curso:** Engenharia de Software  
+**Instituição:** Unicesumar  
+
+---
+
+## Parte 1 – Tipos de Árvores
+
+---
+
+### AVL
+
+#### Conceito
+
+A Árvore AVL (Adelson-Velsky e Landis) é uma Árvore Binária de Busca com balanceamento automático. Foi a primeira estrutura de árvore auto-balanceada proposta na computação (1962). O nome vem dos sobrenomes de seus criadores soviéticos: Georgy **A**delson-**V**elsky e Evgenii **L**andis.
+
+#### Características
+
+- É uma BST com a propriedade adicional de balanceamento.
+- Cada nó mantém um **fator de balanceamento (FB)**, calculado como a diferença entre a altura da subárvore esquerda e a altura da subárvore direita.
+- O fator de balanceamento de qualquer nó deve estar sempre entre **-1, 0 ou +1**.
+- Sempre que uma inserção ou remoção viola essa regra, rotações são aplicadas para restaurar o equilíbrio.
+
+#### Vantagens
+
+- Busca, inserção e remoção garantidas em **O(log n)** no pior caso.
+- Árvore sempre balanceada, sem degradação de desempenho.
+- Ideal para aplicações com muitas operações de leitura.
+
+#### Desvantagens
+
+- Inserções e remoções são mais custosas que em uma BST simples, pois podem exigir múltiplas rotações.
+- Implementação mais complexa que a BST comum.
+- Cada nó precisa armazenar informação extra (o fator de balanceamento ou a altura).
+
+#### Exemplo Ilustrado
+
+Inserindo os valores **10, 20, 30** em ordem:
+
+**Após inserir 10 e 20:**
+```
+  10
+    \
+    20
+```
+FB(10) = -1 → OK
+
+**Após inserir 30 – FB(10) = -2 → desbalanceado!**
+```
+  10
+    \
+    20
+      \
+      30
+```
+
+**Rotação simples à esquerda em 10:**
+```
+   20
+  /  \
+10   30
+```
+FB(20) = 0 → balanceado ✓
+
+---
+
+### Rubro-Negra
+
+#### Conceito
+
+A Árvore Rubro-Negra (*Red-Black Tree*) é uma BST auto-balanceada onde cada nó recebe uma cor — **vermelho** ou **preto** — e um conjunto de regras de coloração garante que a árvore permaneça aproximadamente balanceada após inserções e remoções.
+
+#### Regras de Coloração
+
+1. Todo nó é **vermelho** ou **preto**.
+2. A **raiz** é sempre **preta**.
+3. Todo nó **nulo** (folha sentinela) é considerado **preto**.
+4. Se um nó é **vermelho**, seus dois filhos devem ser **pretos** (não existem dois nós vermelhos consecutivos em nenhum caminho).
+5. Todo caminho de um nó até qualquer folha descendente contém o mesmo número de nós **pretos** (*black-height*).
+
+#### Vantagens
+
+- Busca, inserção e remoção em **O(log n)** garantido.
+- Exige **menos rotações** que a AVL durante inserções e remoções, tornando-a mais eficiente em cenários com muitas escritas.
+- Usada amplamente em bibliotecas padrão de linguagens (ex: `std::map` em C++, `TreeMap` em Java).
+
+#### Desvantagens
+
+- Implementação mais complexa que a AVL.
+- Busca pode ser ligeiramente mais lenta que a AVL em alguns casos, pois o balanceamento é menos rígido (a árvore pode ser até 2x mais alta que o mínimo).
+
+#### Exemplo Ilustrado
+
+Inserindo **10, 20, 30**:
+
+**Após inserir 10 (preto, raiz):**
+```
+[10B]
+```
+
+**Após inserir 20 (vermelho):**
+```
+[10B]
+    \
+   [20R]
+```
+
+**Após inserir 30 (vermelho) → violação (dois vermelhos consecutivos):**
+```
+[10B]
+    \
+   [20R]
+       \
+      [30R]
+```
+
+**Rotação à esquerda + recoloração:**
+```
+   [20B]
+   /   \
+[10R] [30R]
+```
+Regras satisfeitas ✓
+
+---
+
+### N-ária
+
+#### Conceito
+
+Uma Árvore N-ária é uma árvore generalizada onde cada nó pode ter **N filhos**, sendo N um valor definido pela aplicação. Ao contrário das árvores binárias (máximo 2 filhos), as árvores N-árias acomodam hierarquias com graus de ramificação maiores. Um caso especial muito conhecido é a **Árvore B** (*B-Tree*), amplamente utilizada em bancos de dados e sistemas de arquivos.
+
+#### Diferenças em Relação às Árvores Binárias
+
+| Aspecto | Árvore Binária | Árvore N-ária |
+|---|---|---|
+| Filhos por nó | Máximo 2 | Máximo N |
+| Profundidade | Maior | Menor (para mesmos dados) |
+| Uso de memória | Menor por nó | Maior por nó |
+| Representação de hierarquias reais | Limitada | Natural |
+
+#### Vantagens
+
+- Representa hierarquias naturais com múltiplos filhos (sistemas de arquivos, menus, taxonomias).
+- Árvores B e B+ permitem armazenar múltiplas chaves por nó, reduzindo operações de I/O em disco.
+- Menor profundidade para o mesmo número de elementos, comparado a árvores binárias.
+
+#### Desvantagens
+
+- Mais memória por nó (ponteiros para N filhos).
+- Algoritmos de travessia e balanceamento são mais complexos.
+- Para valores pequenos de N (ex: N=2), não oferece vantagem sobre a BST.
+
+#### Exemplo Ilustrado
+
+Árvore N-ária com N=3 (ternária) representando uma estrutura de diretórios:
+
+```
+          [/]
+        /  |  \
+    [home][etc][var]
+    /  \        |
+[user1][user2] [log]
+```
+
+Cada nó pode ter até 3 filhos. A profundidade é menor que numa árvore binária equivalente.
+
+#### Aplicações Práticas
+
+- **Sistemas de arquivos:** Diretórios com múltiplos subdiretórios (ex: NTFS, ext4 usam variações de Árvores B+).
+- **Bancos de dados:** Índices em SGBDs (MySQL InnoDB, PostgreSQL) são implementados com Árvores B+.
+- **Compiladores:** Árvore Sintática Abstrata (AST) onde um nó de expressão pode ter múltiplos filhos.
+- **Interfaces gráficas:** Menus com submenus aninhados.
+- **Inteligência Artificial:** Árvores de decisão com múltiplos ramos.
+
+---
+
+## Parte 2 – Operações em Árvores
+
+---
+
+### Rotação Simples à Direita
+
+#### Objetivo
+
+Restaurar o balanceamento de um nó cuja subárvore **esquerda** está mais pesada (fator de balanceamento = **+2**).
+
+#### Situação em que é utilizada
+
+Ocorre quando um nó fica desbalanceado para a **esquerda** após uma inserção no **filho esquerdo do filho esquerdo** — caso chamado de **LL (Left-Left)**.
+
+#### Exemplo Antes e Depois da Rotação
+
+**Antes (desbalanceado):**
+```
+      C  ← FB = +2
+     /
+    B   ← FB = +1
+   /
+  A
+```
+
+**Depois (rotação à direita em C):**
+```
+    B
+   / \
+  A   C
+```
+
+B sobe, C desce para a direita de B. O filho direito de B (se existisse) se tornaria o filho esquerdo de C.
+
+---
+
+### Rotação Simples à Esquerda
+
+#### Objetivo
+
+Restaurar o balanceamento de um nó cuja subárvore **direita** está mais pesada (fator de balanceamento = **-2**).
+
+#### Situação em que é utilizada
+
+Ocorre quando um nó fica desbalanceado para a **direita** após uma inserção no **filho direito do filho direito** — caso chamado de **RR (Right-Right)**.
+
+#### Exemplo Antes e Depois da Rotação
+
+**Antes (desbalanceado):**
+```
+A  ← FB = -2
+ \
+  B  ← FB = -1
+   \
+    C
+```
+
+**Depois (rotação à esquerda em A):**
+```
+    B
+   / \
+  A   C
+```
+
+B sobe, A desce para a esquerda de B. O filho esquerdo de B (se existisse) se tornaria o filho direito de A.
+
+---
+
+### Rotação Dupla
+
+A rotação dupla é necessária quando o desbalanceamento não é resolvido com uma única rotação — ocorre nos casos **LR** e **RL**.
+
+#### Esquerda-Direita (LR)
+
+**Situação:** O nó está desbalanceado para a esquerda, mas o filho esquerdo está desbalanceado para a **direita**.
+
+**Solução:** Rotação à esquerda no filho esquerdo, depois rotação à direita no nó raiz.
+
+**Exemplo:**
+```
+Antes:          Após rot. esq. em B:    Após rot. dir. em C:
+    C                  C                       B
+   /                  /                       / \
+  A                  B                       A   C
+   \                /
+    B              A
+```
+
+#### Direita-Esquerda (RL)
+
+**Situação:** O nó está desbalanceado para a direita, mas o filho direito está desbalanceado para a **esquerda**.
+
+**Solução:** Rotação à direita no filho direito, depois rotação à esquerda no nó raiz.
+
+**Exemplo:**
+```
+Antes:          Após rot. dir. em B:    Após rot. esq. em A:
+A                   A                        B
+ \                   \                      / \
+  C                   B                   A   C
+ /                     \
+B                       C
+```
+
+---
+
+### Inversão (Espelhamento)
+
+#### Conceito
+
+A inversão (ou espelhamento) de uma árvore binária consiste em trocar recursivamente o filho esquerdo pelo filho direito em **todos os nós** da árvore. O resultado é a imagem espelhada da árvore original.
+
+#### Aplicação
+
+- Algoritmos de comparação de estruturas simétricas.
+- Verificação de se uma árvore é palíndroma/simétrica.
+- Transformações em compiladores e otimizadores de expressões.
+- Problema clássico de entrevistas técnicas.
+
+#### Exemplo Antes e Depois
+
+**Antes:**
+```
+        4
+       / \
+      2   7
+     / \ / \
+    1  3 6  9
+```
+
+**Depois (espelhada):**
+```
+        4
+       / \
+      7   2
+     / \ / \
+    9  6 3  1
+```
+
+Cada par de subárvores foi trocado em todos os níveis.
+
+---
+
+## Parte 3 – Aplicação Prática
+
+### Sistema Escolhido: Banco de Dados Relacional
+
+Em um banco de dados relacional, como MySQL ou PostgreSQL, os **índices** são a estrutura que permite localizar registros rapidamente sem percorrer toda a tabela.
+
+### Estrutura mais Adequada: Árvore B+ (variação N-ária)
+
+#### Justificativa
+
+**Organização dos dados:**  
+As tabelas de bancos de dados armazenam milhões de registros em disco. A Árvore B+ armazena múltiplas chaves por nó, aproveitando ao máximo cada leitura de bloco do disco. Diferentemente de árvores binárias, onde cada nó guarda apenas um valor, um nó da Árvore B+ pode guardar dezenas de chaves, reduzindo drasticamente a profundidade da árvore.
+
+**Operações realizadas:**  
+As operações mais comuns em bancos de dados são buscas por intervalo (ex: `WHERE idade BETWEEN 20 AND 30`). A Árvore B+ é ideal para isso porque:
+- Todos os valores reais ficam nas **folhas**, que são interligadas como uma lista encadeada.
+- Uma busca por intervalo encontra o início em O(log n) e percorre as folhas sequencialmente.
+
+**Desempenho:**  
+- Acesso a disco é minimizado: a altura da árvore é muito menor que em AVL ou Rubro-Negra para o mesmo número de elementos.
+- Inserções e remoções mantêm O(log n) com reorganização local dos nós.
+
+**Comparação com alternativas:**  
+Uma AVL ou Rubro-Negra não seria adequada aqui pois são binárias — para 1 bilhão de registros, teriam ~30 níveis de profundidade, significando ~30 leituras de disco. Uma Árvore B+ com fator de ramificação 100 teria apenas ~5 níveis para o mesmo volume.
+
+---
+
+## Parte 4 – Comparação entre Estruturas
+
+### Tabela Comparativa
+
+| Estrutura | Nº Máximo de Filhos | Balanceamento | Complexidade de Busca | Complexidade de Inserção | Vantagem Principal | Desvantagem Principal | Exemplo de Aplicação |
+|---|---|---|---|---|---|---|---|
+| BST | 2 | Não possui balanceamento automático. Pode ficar desbalanceada conforme a ordem de inserção. | O(log n) no melhor caso e O(n) no pior caso | O(log n) no melhor caso e O(n) no pior caso | Estrutura simples de entender e implementar | Pode perder desempenho se ficar desbalanceada | Árvores de busca básicas |
+| AVL | 2 | Sim. Mantém o fator de balanceamento com rotações | O(log n) | O(log n) | Busca previsível e eficiente | Inserção e remoção são mais custosas por causa das rotações | Índices e estruturas que exigem leitura frequente |
+| Rubro-Negra | 2 | Sim. Usa coloração e rotações para manter o balanceamento aproximado | O(log n) | O(log n) | Balanceamento eficiente com menos rotações que a AVL | Implementação mais complexa | Bibliotecas e estruturas internas de sistemas |
+| N-ária | N (vários filhos) | Pode ou não possuir mecanismos de balanceamento, dependendo da variação | O(log n) em estruturas balanceadas, mas depende da aplicação | O(log n) ou proporcional à estrutura da árvore | Representa melhor hierarquias com muitos filhos | Não é tão simples quanto a árvore binária em alguns contextos | Sistema de arquivos, menus e taxonomias |
+
+### Explicação das Colunas
+
+**Nº Máximo de Filhos**  
+BST, AVL e Rubro-Negra são binárias — cada nó tem no máximo 2 filhos. A N-ária generaliza isso para N filhos por nó, onde N é definido pela aplicação (ex: N=3 numa ternária, N=100 numa Árvore B de banco de dados).
+
+**Balanceamento**  
+A BST não se autobalanceia: inserir elementos em ordem crescente resulta em uma "lista encadeada disfarçada", com O(n) em todas as operações. AVL e Rubro-Negra corrigem isso automaticamente através de rotações. A AVL é mais rígida (FB entre -1 e +1), enquanto a Rubro-Negra aceita um desequilíbrio maior mas faz menos rotações. A N-ária pode ou não ser balanceada (a Árvore B é; uma árvore de diretórios genérica não necessariamente é).
+
+**Complexidade de Busca**  
+Tanto AVL quanto Rubro-Negra garantem O(log n) no pior caso por serem sempre balanceadas. A BST tem O(log n) apenas se estiver balanceada — no pior caso degenera para O(n). A N-ária balanceada também alcança O(log n), mas com base logarítmica maior (o que significa menos níveis para o mesmo n).
+
+**Complexidade de Inserção**  
+Todas as estruturas têm O(log n) em média. No entanto, AVL pode exigir até O(log n) rotações após cada inserção, enquanto a Rubro-Negra é limitada a no máximo 2 rotações por inserção, tornando-a mais eficiente na prática para cargas de escrita intensas.
+
+**Vantagem e Desvantagem Principal**  
+A BST é a mais simples de implementar, mas a mais frágil em desempenho. A AVL oferece a busca mais rápida e previsível. A Rubro-Negra equilibra bem escrita e leitura. A N-ária brilha quando os dados têm hierarquias naturais com muitos filhos ou quando a largura do nó importa (como no acesso a disco).
+
+**Exemplos de Aplicação**  
+- **BST:** Implementações educacionais, protótipos simples de dicionários.
+- **AVL:** Autocompletar em editores de texto, tabelas de símbolos em compiladores.
+- **Rubro-Negra:** `std::map`/`std::set` do C++, `TreeMap` do Java, kernel Linux (agendador de processos CFS).
+- **N-ária / Árvore B+:** Índices de bancos de dados (MySQL InnoDB, PostgreSQL), sistemas de arquivos (NTFS, HFS+).
