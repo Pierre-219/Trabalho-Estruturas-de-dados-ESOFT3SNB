@@ -75,6 +75,27 @@ void inserir(TabelaHash *tabela, const char *palavra, const char *definicao) {
 }
 Parte 3
 Parte 4
+Código feito por João Vittor Mulinari
+
+void exibir_tabela(TabelaHash *tabela) {
+    printf("        TABELA HASH - DICIONARIO\n");
+
+    for (int i = 0; i < TAMANHO_TABELA; i++) {
+        printf("[%2d] ", i);
+        if (tabela->buckets[i] == NULL) {
+            printf("(vazio)\n");
+        } else {
+            No *atual = tabela->buckets[i];
+            int primeiro = 1;
+            while (atual != NULL) {
+                if (!primeiro) printf("     -> ");
+                printf("\"%s\": %s\n", atual->palavra, atual->definicao);
+                primeiro = 0;
+                atual = atual->proximo;
+            }
+        }
+    }
+}
 Parte 5
 Código feito por Antônio Henrique Kviatcovski 
 
