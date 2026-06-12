@@ -38,6 +38,41 @@ void inicializar_tabela(TabelaHash *tabela) {
     tabela->total_colisoes = 0;
 }
 Parte 2
+void inserir(TabelaHash *tabela, const char *palavra, const char *definicao) {
+    unsigned int indice = funcao_hash(palavra);
+    No *atual = tabela->buckets[indice];
+
+    while (atual != NULL) {
+        if (strcmp(atual->palavra, palavra) == 0) {
+            strncpy(atual->definicao, definicao, TAM_DEFINICAO - 1);
+            atual->definicao[TAM_DEFINICAO - 1] = '\0';
+            printf("Definição de \"%s\" atualizada.\n", palavra);
+            return;
+        }
+        atual = atual->proximo;
+    }
+
+    No *novo = (No *)malloc(sizeof(No));
+    if (novo == NULL) {
+        printf("Erro: sem memória para inserir \"%s\".\n", palavra);
+        return;
+    }
+
+    strncpy(novo->palavra, palavra, TAM_PALAVRA - 1);
+    novo->palavra[TAM_PALAVRA - 1] = '\0';
+    strncpy(novo->definicao, definicao, TAM_DEFINICAO - 1);
+    novo->definicao[TAM_DEFINICAO - 1] = '\0';
+
+    if (tabela->buckets[indice] != NULL) {
+        tabela->total_colisoes++;
+    }
+
+    novo->proximo = tabela->buckets[indice];
+    tabela->buckets[indice] = novo;
+    tabela->total_elementos++;
+
+    printf("Palavra \"%s\" inserida no índice %u.\n", palavra, indice);
+}
 Parte 3
 Parte 4
 Parte 5
