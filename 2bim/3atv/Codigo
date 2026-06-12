@@ -1,1 +1,38 @@
+codigo feito por Pierre
+Struct
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+#define TAMANHO_TABELA 13
+#define TAM_PALAVRA 100
+#define TAM_DEFINICAO 500
+
+typedef struct No {
+    char palavra[TAM_PALAVRA];
+    char definicao[TAM_DEFINICAO];
+    struct No *proximo;
+} No;
+
+typedef struct {
+    No *buckets[TAMANHO_TABELA];
+    int total_elementos;
+    int total_colisoes;
+} TabelaHash;
+
+unsigned int funcao_hash(const char *palavra) {
+    unsigned int hash = 5381;
+    int c;
+    while ((c = (unsigned char)*palavra++)) {
+        hash = hash * 31 + c;
+    }
+    return hash % TAMANHO_TABELA;
+}
+
+void inicializar_tabela(TabelaHash *tabela) {
+    for (int i = 0; i < TAMANHO_TABELA; i++) {
+        tabela->buckets[i] = NULL;
+    }
+    tabela->total_elementos = 0;
+    tabela->total_colisoes = 0;
+}
